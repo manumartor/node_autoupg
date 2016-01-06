@@ -1,0 +1,15 @@
+{
+  "name": "node_autoupgrader",
+  "version": "1.0.0",
+  "description": "Nodejs module to upgrade others nodejs apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "nodejs",
+    "upgrader"
+  ],
+  "author": "mmartinez <manu.martor@gmail.com>",
+  "license": "ISC"
+}
