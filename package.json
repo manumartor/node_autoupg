@@ -1,6 +1,6 @@
 {
   "name": "node_autoupg",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Nodejs module to auto upgrade its own code",
   "main": "index.js",
   "scripts": {
