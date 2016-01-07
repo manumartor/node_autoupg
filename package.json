@@ -1,15 +1,24 @@
 {
-  "name": "node_autoupgrader",
+  "name": "node_autoupg",
   "version": "1.0.0",
-  "description": "Nodejs module to upgrade others nodejs apps",
+  "description": "Nodejs module to auto upgrade its own code",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "./node_modules/.bin/jasmine-node test",
+    "tst": "./node_modules/.bin/jasmine-node test --autotest --watch .",
+    "run-script": "node index.js"
   },
   "keywords": [
     "nodejs",
-    "upgrader"
+    "auto upgrader"
   ],
-  "author": "mmartinez <manu.martor@gmail.com>",
-  "license": "ISC"
+  "author": "manumartor <manu.martor@gmail.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "jasmine-node": "^1.14.5"
+  },
+  "repository": "manumartor/node_autoupg",
+  "bugs": {
+    "url": "https://github.com/manumartor/node_autoupg/issues"
+  }
 }
