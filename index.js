@@ -10,9 +10,7 @@
  * @website    https://www.npmjs.com/package/node_autoupg
  */
 
-module.exports.autoUpg = function () {
-  
-  return {
+module.exports = {
     start: function() {
       console.log('=======================================================================================================');
       console.log('NodeJS Auto Upgrader v.1.0.0');
@@ -24,4 +22,3 @@ module.exports.autoUpg = function () {
       console.log('=======================================================================================================');
     }
   };
-};
