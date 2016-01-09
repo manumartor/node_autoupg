@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* index.js v.1.0.2 */
+
+module.exports = function(opts){
+  /**
+   *	Autoupg is a nodejs module to upgrade de source code of others nodejs modules
+   *
+   * @exports    autoUpg
+   * @version    v.1.0.2
+   * @author     Manu Martor &lt;manu.martor@gmail.com>
+   * @license    Apache-2.0
+   * @requires   autoUpg/utils
+   * @repository https://github.com/manumartor/node_autoupg.git
+   * @website    https://www.npmjs.com/package/node_autoupg
+   */
+  var that = {};
+  
+  /** 
+   * JSON parsed object with the values of the autoUpg package.json
+   *
+   * @private
+   * @memberof module:autoUpg 
+   * @type     {Object}
+   */
+  var pkg = require('./package.json'); //var privateStaticVar = 'blablabla';
+  
+  /*
+   * Load module:autoUpg/utils and other global static functions
+   */
+  require('./lib/commons.js'),
+  opts = opts || {};
+
+  /**
+   * The options values to use when call the run method
+   * 
+   * @public
+   * @type {Object}
+   * @property {Object} opts - The opts object
+   * @property {Boolean|String} opts.url - The url to search for new release. Or false if error or not setted
+   **/
+  that.opts =  {
+    url: false,
+    type: false,
+    path: false
+  };
+
+  /**
+   * Run
+   *
+   * Use {@link autoUpg#validate_opts} to validate de options.
+   *
+   * @public
+   * @requires autoUpg.validate_opts
+   * @requires autoUpg.onBeforeRun
+   * @requires autoUpg.onAfterRun
+   * @param {Object} opts - The configurations options which run the upgrade
+   **/
+  that.run = function(opts) {
+    console.log('=======================================================================================================');
+    console.log(pkg.name + ' v.' + pkg.version);
+    console.log('---------------------');
+    console.log('Initializating nodejs auto upgrader');
+
+    //prepare opts
+    var log_str = 'Set opts';
+    opts = opts || that.opts;
+    that.opts = that.validate_opts(opts, log_str);
+    if (!that.opts)
+      return false;
+    console.logpts('Set opts');
+
+    //execute onBeforeRunMethod
+    opts.onBeforeRun = opts.onBeforeRun || null;
+    that.onBeforeRun(opts.onBeforeRun, function(){
+
+    });
+
+    console.log('');
+    console.log('=======================================================================================================');
+  };
+
+  /**
+   * Validate opts
+   *
+   * @param {Object} opts    The configuration options to validate.
+   * @param {String} log_str The string text to show in log.
+   * @return {Object|Boolean} False if validations fail. Or opts object if all ok.
+   **/
+  that.validate_opts =  function(opts, log_str){
+
+    //1. validate that opts param exits
+    if (typeof opts == 'undefined'){
+      return throw_error(log_str, 'Error: opts param is null');
+    }
+
+    //2. validate opts.type
+    var type_availables = ['git'];
+    if (typeof opts.type == 'undefined' || type_availables.indexOf(opts.type) == -1){
+      return throw_error(log_str, 'Error: opts.type invalid value');
+    }
+
+    //3. validate opt.url in fact of type
+    if (typeof opts.url == 'undefined' || !opts.url.match(/(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&amp;%@!\-\/]))?/)){
+      return throw_error(log_str, 'Error: opts.url invalid value');
+    }
+
+    if (opts.type == 'git' &amp;&amp; opts.url.substr((opts.url.length - 4)) !== '.git' &amp;&amp; opts.url.substr(0, 19) !== 'https://github.com/'){
+      return throw_error(log_str, 'Error: opts.url for git type invalid value -->' + opts.url);
+    }
+
+    //4. validate opt.path
+    opts.path = opts.path || './';
+    if (opts.path.substr(0, 2) != './'){
+      return throw_error(log_str, 'Error: opts.path invalid value');
+    }
+
+    //5. check that all the validations are passed
+    if (!opts.url || !opts.type || !opts.path){
+      return throw_error(log_str, 'Error: opts validations problem');
+    }
+
+    return opts;
+  };
+
+  /**
+   * OnBeforeRun
+   **/
+  that.onBeforeRun = function(hook, callBack){
+    //do a backup of the source code
+
+
+    //call hook and callback
+    callBack = typeof callBack == 'function'? callBack: function(){};
+    if (typeof hook == 'function')
+      hook(callBack);
+    else 
+      callBack();
+  };
+
+  /**
+   * OnAfterRun
+   **/
+  that.onAfterRun = function(hook, callBack){
+
+
+
+    //call hook and callback
+    callBack = typeof callBack == 'function'? callBack: function(){};
+    if (typeof hook == 'function')
+      hook(callBack);
+    else 
+      callBack();
+  };
+
+  /**
+   * OnErrorRun
+   **/
+  that.onErrorRun = function(hook, callBack){
+
+
+    //call hook and callback
+    callBack = typeof callBack == 'function'? callBack: function(){};
+    if (typeof hook == 'function')
+      hook(callBack);
+    else 
+      callBack();
+  };
+  
+  return /** @alias module:autoUpg */ that;
+}();</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-autoUpg.html">autoUpg</a></li><li><a href="module-autoUpg_utils.html">autoUpg/utils</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Sat Jan 09 2016 00:55:50 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
