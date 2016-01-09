@@ -1,13 +1,15 @@
 ### Documentation
 Visit the [autoUpg Wiki](https://github.com/manumartor/node_autoupg/wiki)
 
-To put on working the wiki folder the 1st time execute:
+To put on working the wiki folder just for the 1st time execute:
   #cd docs/node_autoupg.wiki
   #git clone https://github.com/manumartor/node_autoupg.wiki.github
   
-To update de wiki folder execute:
-  #cd docs/node_autoupg.wiki
-  #git fecth
+To update the wiki folder from github repository execute:
+  #npm run git-fetch
+  
+To commit the wiki changes to the github repository execute:
+  #npm run fit-push
 
 ### Technical documentation
 Visit the [automated documentation generayed with JsDoc for v.1.0.1](./../1.0.1/index.html).
