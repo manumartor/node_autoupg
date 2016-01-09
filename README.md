@@ -2,7 +2,15 @@
 Módulo NodeJs para actualizar el código fuente de apps hechas en NodeJS.
 
 ## Documentation
-Visit the [autoUpg Wiki](https://github.com/manumartor/node_autoupg/wiki)
+Visit the [autoUpg Wiki](https://github.com/manumartor/node_autoupg/wiki).
+
+To put on working the wiki folder the 1st time execute:
+  #cd docs/node_autoupg.wiki
+  #git clone https://github.com/manumartor/node_autoupg.wiki.github
+  
+To update de wiki folder execute:
+  #cd docs/node_autoupg.wiki
+  #git fecth
 
 ## Technical documentation
 Visit the [automated documentation generayed with JsDoc for v.1.0.1](docs/node_autoupg/1.0.1/index.html).
