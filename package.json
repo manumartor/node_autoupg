@@ -10,7 +10,8 @@
     "publish": "git push; cd docs/node_autoupg.wiki/;git commit -a -m \"Updated wiki docs\"; git push",
     "try": "node test.js",
     "jsdoc": "./node_modules/.bin/jsdoc -d docs -R README.md -p --verbose ./package.json ./index.js ./lib/commons.js",
-    "git": "git push; cd docs/node_autoupg.wiki/;git commit -a -m \"Updated wiki docs\"; git push"
+    "git-push": "git push; cd docs/node_autoupg.wiki/;git commit -a -m \"Updated wiki docs\"; git push",
+    "git-fetch": "git fetch; cd docs/node_autoupg.wiki/; git fetch"
   },
   "keywords": [
     "nodejs",
