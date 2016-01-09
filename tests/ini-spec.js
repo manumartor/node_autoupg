@@ -1,7 +1,7 @@
 /* tests/ini-spec.js v.1.0.2 */
+var autoUpg = require('./../index.js');
 
 describe("Initial load module test", function () {
-  var autoUpg = require('./../index.js');
   
   it("Is autoUpg loaded", function () {
     expect(autoUpg).toBeDefined();
@@ -11,7 +11,7 @@ describe("Initial load module test", function () {
     expect(typeof autoUpg).toBe('object');
   });
   
-  it('In autoUpg exists start method', function(){
-    expect(typeof autoUpg.start).toBe('function');
+  it('Exists in autoUpg the run method', function(){
+    expect(typeof autoUpg.run).toBe('function');
   });
 });

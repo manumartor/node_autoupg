@@ -1,4 +1,7 @@
-/* test.js v.1.0.0 */
+/* test.js v.1.0.2 */
 
 var autoUpg = require('./index.js');
-autoUpg.start();
+autoUpg.run({
+  url: "http",
+  type: "git"
+});

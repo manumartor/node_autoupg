@@ -1,24 +1,34 @@
 {
   "name": "node_autoupg",
   "version": "1.0.1",
-  "description": "Nodejs module to auto upgrade its own code",
+  "description": "Nodejs module to upgrade de source code of other nodejs modules",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine-node test",
-    "tst": "./node_modules/.bin/jasmine-node test --autotest --watch .",
-    "run-script": "node index.js"
+    "test": "./node_modules/.bin/jasmine-node --verbose tests",
+    "test-watch": "./node_modules/.bin/jasmine-node --verbose tests --autotest --watch .",
+    "prepublish": "./node_modules/.bin/jsdoc -d docs -R README.md --verbose ./package.json ./index.js",
+    "publish": "git push; cd docs/node_modules.wiki/;git commit -a -m \"Updated wiki docs\"; git push",
+    "try": "node test.js",
+    "jsdoc": "./node_modules/.bin/jsdoc -d docs -R README.md -p --verbose ./package.json ./index.js ./lib/commons.js",
+    "git": "git push; cd docs/node_modules.wiki/;git commit -a -m \"Updated wiki docs\"; git push"
   },
   "keywords": [
     "nodejs",
+    "auto",
+    "upgrade",
     "auto upgrader"
   ],
   "author": "manumartor <manu.martor@gmail.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "jasmine-node": "^1.14.5"
+    
   },
   "repository": "manumartor/node_autoupg",
   "bugs": {
     "url": "https://github.com/manumartor/node_autoupg/issues"
+  },
+  "devDependencies": {
+    "jasmine-node": "^1.14.5",
+    "jsdoc": "^3.4.0"
   }
 }
