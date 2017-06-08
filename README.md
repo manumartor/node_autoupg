@@ -1,5 +1,5 @@
 # node_autoupg
-Módulo NodeJs para actualizar el código fuente de apps hechas en NodeJS.
+Módulo NodeJs para actualizar over the air el código fuente de apps hechas en NodeJS.
 
 ## Documentation
 Visit the [autoUpg Wiki](https://github.com/manumartor/node_autoupg/wiki).
